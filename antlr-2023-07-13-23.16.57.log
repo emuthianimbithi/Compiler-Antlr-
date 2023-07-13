@@ -1,0 +1,90 @@
+2023-07-13 23:16:57:153 grammar LogManager.java:25 before: (COMBINED_GRAMMAR c (RULES (RULE program (BLOCK (ALT (* (BLOCK (ALT preprocessorDirective) (ALT declaration)))))) (RULE preprocessorDirective (BLOCK (ALT '#' Identifier))) (RULE declaration (BLOCK (ALT variableDeclaration) (ALT functionDeclaration))) (RULE variableDeclaration (BLOCK (ALT typeSpecifier ID ';'))) (RULE typeSpecifier (BLOCK (ALT 'int') (ALT 'float') (ALT 'char') (ALT 'double') (ALT 'long') (ALT Identifier))) (RULE functionDeclaration (BLOCK (ALT typeSpecifier ID '(' (? (BLOCK (ALT parameterList))) ')' compoundStatement))) (RULE parameterList (BLOCK (ALT parameter (* (BLOCK (ALT ',' parameter)))))) (RULE parameter (BLOCK (ALT typeSpecifier ID))) (RULE compoundStatement (BLOCK (ALT '{' (* (BLOCK (ALT statement))) '}'))) (RULE statement (BLOCK (ALT compoundStatement) (ALT expressionStatement) (ALT selectionStatement) (ALT iterationStatement) (ALT jumpStatement))) (RULE expressionStatement (BLOCK (ALT (? (BLOCK (ALT expression))) ';'))) (RULE selectionStatement (BLOCK (ALT 'if' '(' expression ')' statement (? (BLOCK (ALT 'else' statement)))))) (RULE iterationStatement (BLOCK (ALT 'while' '(' expression ')' statement))) (RULE jumpStatement (BLOCK (ALT 'return' (? (BLOCK (ALT expression))) ';'))) (RULE expression (BLOCK (ALT assignmentExpression))) (RULE assignmentExpression (BLOCK (ALT logicalOrExpression (? (BLOCK (ALT assignmentOperator assignmentExpression)))))) (RULE logicalOrExpression (BLOCK (ALT logicalAndExpression (* (BLOCK (ALT '||' logicalAndExpression)))))) (RULE logicalAndExpression (BLOCK (ALT equalityExpression (* (BLOCK (ALT '&&' equalityExpression)))))) (RULE equalityExpression (BLOCK (ALT relationalExpression (* (BLOCK (ALT (BLOCK (ALT '==') (ALT '!=')) relationalExpression)))))) (RULE relationalExpression (BLOCK (ALT additiveExpression (* (BLOCK (ALT (BLOCK (ALT '<') (ALT '>') (ALT '<=') (ALT '>=')) additiveExpression)))))) (RULE additiveExpression (BLOCK (ALT multiplicativeExpression (* (BLOCK (ALT (BLOCK (ALT '+') (ALT '-')) multiplicativeExpression)))))) (RULE multiplicativeExpression (BLOCK (ALT unaryExpression (* (BLOCK (ALT (BLOCK (ALT '*') (ALT '/') (ALT '%')) unaryExpression)))))) (RULE unaryExpression (BLOCK (ALT (BLOCK (ALT '+') (ALT '-') (ALT '!')) unaryExpression) (ALT primaryExpression))) (RULE primaryExpression (BLOCK (ALT ID) (ALT NUMBER) (ALT '(' expression ')') (ALT functionCall))) (RULE functionCall (BLOCK (ALT ID '(' (? (BLOCK (ALT argumentList))) ')'))) (RULE argumentList (BLOCK (ALT expression (* (BLOCK (ALT ',' expression)))))) (RULE assignmentOperator (BLOCK (ALT '='))) (RULE ID (BLOCK (ALT [a-zA-Z_] (* (BLOCK (ALT [a-zA-Z0-9_])))))) (RULE NUMBER (BLOCK (ALT (+ (BLOCK (ALT [0-9]))) (? (BLOCK (ALT '.' (+ (BLOCK (ALT [0-9]))))))))) (RULE Identifier (BLOCK (ALT (? (BLOCK (ALT '#'))) [a-zA-Z_] (* (BLOCK (ALT [a-zA-Z0-9_])))))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n])))) skip)))))
+2023-07-13 23:16:57:174 grammar LogManager.java:25 after: (COMBINED_GRAMMAR c (RULES (RULE program (BLOCK (ALT (* (BLOCK (ALT preprocessorDirective) (ALT declaration)))))) (RULE preprocessorDirective (BLOCK (ALT '#' Identifier))) (RULE declaration (BLOCK (ALT variableDeclaration) (ALT functionDeclaration))) (RULE variableDeclaration (BLOCK (ALT typeSpecifier ID ';'))) (RULE typeSpecifier (BLOCK (ALT (SET 'int' 'float' 'char' 'double' 'long' Identifier)))) (RULE functionDeclaration (BLOCK (ALT typeSpecifier ID '(' (? (BLOCK (ALT parameterList))) ')' compoundStatement))) (RULE parameterList (BLOCK (ALT parameter (* (BLOCK (ALT ',' parameter)))))) (RULE parameter (BLOCK (ALT typeSpecifier ID))) (RULE compoundStatement (BLOCK (ALT '{' (* (BLOCK (ALT statement))) '}'))) (RULE statement (BLOCK (ALT compoundStatement) (ALT expressionStatement) (ALT selectionStatement) (ALT iterationStatement) (ALT jumpStatement))) (RULE expressionStatement (BLOCK (ALT (? (BLOCK (ALT expression))) ';'))) (RULE selectionStatement (BLOCK (ALT 'if' '(' expression ')' statement (? (BLOCK (ALT 'else' statement)))))) (RULE iterationStatement (BLOCK (ALT 'while' '(' expression ')' statement))) (RULE jumpStatement (BLOCK (ALT 'return' (? (BLOCK (ALT expression))) ';'))) (RULE expression (BLOCK (ALT assignmentExpression))) (RULE assignmentExpression (BLOCK (ALT logicalOrExpression (? (BLOCK (ALT assignmentOperator assignmentExpression)))))) (RULE logicalOrExpression (BLOCK (ALT logicalAndExpression (* (BLOCK (ALT '||' logicalAndExpression)))))) (RULE logicalAndExpression (BLOCK (ALT equalityExpression (* (BLOCK (ALT '&&' equalityExpression)))))) (RULE equalityExpression (BLOCK (ALT relationalExpression (* (BLOCK (ALT (SET '==' '!=') relationalExpression)))))) (RULE relationalExpression (BLOCK (ALT additiveExpression (* (BLOCK (ALT (SET '<' '>' '<=' '>=') additiveExpression)))))) (RULE additiveExpression (BLOCK (ALT multiplicativeExpression (* (BLOCK (ALT (SET '+' '-') multiplicativeExpression)))))) (RULE multiplicativeExpression (BLOCK (ALT unaryExpression (* (BLOCK (ALT (SET '*' '/' '%') unaryExpression)))))) (RULE unaryExpression (BLOCK (ALT (SET '+' '-' '!') unaryExpression) (ALT primaryExpression))) (RULE primaryExpression (BLOCK (ALT ID) (ALT NUMBER) (ALT '(' expression ')') (ALT functionCall))) (RULE functionCall (BLOCK (ALT ID '(' (? (BLOCK (ALT argumentList))) ')'))) (RULE argumentList (BLOCK (ALT expression (* (BLOCK (ALT ',' expression)))))) (RULE assignmentOperator (BLOCK (ALT '='))) (RULE ID (BLOCK (ALT [a-zA-Z_] (* (BLOCK (ALT [a-zA-Z0-9_])))))) (RULE NUMBER (BLOCK (ALT (+ (BLOCK (ALT [0-9]))) (? (BLOCK (ALT '.' (+ (BLOCK (ALT [0-9]))))))))) (RULE Identifier (BLOCK (ALT (? (BLOCK (ALT '#'))) [a-zA-Z_] (* (BLOCK (ALT [a-zA-Z0-9_])))))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n])))) skip)))))
+2023-07-13 23:16:57:193 grammar LogManager.java:25 after extract implicit lexer =(COMBINED_GRAMMAR c (RULES (RULE program (BLOCK (ALT (* (BLOCK (ALT preprocessorDirective) (ALT declaration)))))) (RULE preprocessorDirective (BLOCK (ALT '#' Identifier))) (RULE declaration (BLOCK (ALT variableDeclaration) (ALT functionDeclaration))) (RULE variableDeclaration (BLOCK (ALT typeSpecifier ID ';'))) (RULE typeSpecifier (BLOCK (ALT (SET 'int' 'float' 'char' 'double' 'long' Identifier)))) (RULE functionDeclaration (BLOCK (ALT typeSpecifier ID '(' (? (BLOCK (ALT parameterList))) ')' compoundStatement))) (RULE parameterList (BLOCK (ALT parameter (* (BLOCK (ALT ',' parameter)))))) (RULE parameter (BLOCK (ALT typeSpecifier ID))) (RULE compoundStatement (BLOCK (ALT '{' (* (BLOCK (ALT statement))) '}'))) (RULE statement (BLOCK (ALT compoundStatement) (ALT expressionStatement) (ALT selectionStatement) (ALT iterationStatement) (ALT jumpStatement))) (RULE expressionStatement (BLOCK (ALT (? (BLOCK (ALT expression))) ';'))) (RULE selectionStatement (BLOCK (ALT 'if' '(' expression ')' statement (? (BLOCK (ALT 'else' statement)))))) (RULE iterationStatement (BLOCK (ALT 'while' '(' expression ')' statement))) (RULE jumpStatement (BLOCK (ALT 'return' (? (BLOCK (ALT expression))) ';'))) (RULE expression (BLOCK (ALT assignmentExpression))) (RULE assignmentExpression (BLOCK (ALT logicalOrExpression (? (BLOCK (ALT assignmentOperator assignmentExpression)))))) (RULE logicalOrExpression (BLOCK (ALT logicalAndExpression (* (BLOCK (ALT '||' logicalAndExpression)))))) (RULE logicalAndExpression (BLOCK (ALT equalityExpression (* (BLOCK (ALT '&&' equalityExpression)))))) (RULE equalityExpression (BLOCK (ALT relationalExpression (* (BLOCK (ALT (SET '==' '!=') relationalExpression)))))) (RULE relationalExpression (BLOCK (ALT additiveExpression (* (BLOCK (ALT (SET '<' '>' '<=' '>=') additiveExpression)))))) (RULE additiveExpression (BLOCK (ALT multiplicativeExpression (* (BLOCK (ALT (SET '+' '-') multiplicativeExpression)))))) (RULE multiplicativeExpression (BLOCK (ALT unaryExpression (* (BLOCK (ALT (SET '*' '/' '%') unaryExpression)))))) (RULE unaryExpression (BLOCK (ALT (SET '+' '-' '!') unaryExpression) (ALT primaryExpression))) (RULE primaryExpression (BLOCK (ALT ID) (ALT NUMBER) (ALT '(' expression ')') (ALT functionCall))) (RULE functionCall (BLOCK (ALT ID '(' (? (BLOCK (ALT argumentList))) ')'))) (RULE argumentList (BLOCK (ALT expression (* (BLOCK (ALT ',' expression)))))) (RULE assignmentOperator (BLOCK (ALT '=')))))
+2023-07-13 23:16:57:193 grammar LogManager.java:25 lexer =(LEXER_GRAMMAR cLexer (RULES (RULE T__0 (BLOCK (ALT '#'))) (RULE T__1 (BLOCK (ALT ';'))) (RULE T__2 (BLOCK (ALT 'int'))) (RULE T__3 (BLOCK (ALT 'float'))) (RULE T__4 (BLOCK (ALT 'char'))) (RULE T__5 (BLOCK (ALT 'double'))) (RULE T__6 (BLOCK (ALT 'long'))) (RULE T__7 (BLOCK (ALT '('))) (RULE T__8 (BLOCK (ALT ')'))) (RULE T__9 (BLOCK (ALT ','))) (RULE T__10 (BLOCK (ALT '{'))) (RULE T__11 (BLOCK (ALT '}'))) (RULE T__12 (BLOCK (ALT 'if'))) (RULE T__13 (BLOCK (ALT 'else'))) (RULE T__14 (BLOCK (ALT 'while'))) (RULE T__15 (BLOCK (ALT 'return'))) (RULE T__16 (BLOCK (ALT '||'))) (RULE T__17 (BLOCK (ALT '&&'))) (RULE T__18 (BLOCK (ALT '=='))) (RULE T__19 (BLOCK (ALT '!='))) (RULE T__20 (BLOCK (ALT '<'))) (RULE T__21 (BLOCK (ALT '>'))) (RULE T__22 (BLOCK (ALT '<='))) (RULE T__23 (BLOCK (ALT '>='))) (RULE T__24 (BLOCK (ALT '+'))) (RULE T__25 (BLOCK (ALT '-'))) (RULE T__26 (BLOCK (ALT '*'))) (RULE T__27 (BLOCK (ALT '/'))) (RULE T__28 (BLOCK (ALT '%'))) (RULE T__29 (BLOCK (ALT '!'))) (RULE T__30 (BLOCK (ALT '='))) (RULE ID (BLOCK (ALT [a-zA-Z_] (* (BLOCK (ALT [a-zA-Z0-9_])))))) (RULE NUMBER (BLOCK (ALT (+ (BLOCK (ALT [0-9]))) (? (BLOCK (ALT '.' (+ (BLOCK (ALT [0-9]))))))))) (RULE Identifier (BLOCK (ALT (? (BLOCK (ALT '#'))) [a-zA-Z_] (* (BLOCK (ALT [a-zA-Z0-9_])))))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (+ (BLOCK (ALT [ \t\r\n])))) skip)))))
+2023-07-13 23:16:57:472 semantics LogManager.java:25 tokens={EOF=-1, T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, T__24=25, T__25=26, T__26=27, T__27=28, T__28=29, T__29=30, T__30=31, ID=32, NUMBER=33, Identifier=34, WS=35}
+2023-07-13 23:16:57:472 semantics LogManager.java:25 strings={'#'=1, ';'=2, 'int'=3, 'float'=4, 'char'=5, 'double'=6, 'long'=7, '('=8, ')'=9, ','=10, '{'=11, '}'=12, 'if'=13, 'else'=14, 'while'=15, 'return'=16, '||'=17, '&&'=18, '=='=19, '!='=20, '<'=21, '>'=22, '<='=23, '>='=24, '+'=25, '-'=26, '*'=27, '/'=28, '%'=29, '!'=30, '='=31}
+2023-07-13 23:16:57:484 LL1 LogManager.java:25 
+DECISION 0 in rule program
+2023-07-13 23:16:57:485 LL1 LogManager.java:25 look=[1, {3..7, 34}]
+2023-07-13 23:16:57:485 LL1 LogManager.java:25 LL(1)? true
+2023-07-13 23:16:57:485 LL1 LogManager.java:25 
+DECISION 1 in rule program
+2023-07-13 23:16:57:486 LL1 LogManager.java:25 look=[{1, 3..7, 34}, <EOF>]
+2023-07-13 23:16:57:486 LL1 LogManager.java:25 LL(1)? true
+2023-07-13 23:16:57:486 LL1 LogManager.java:25 
+DECISION 2 in rule declaration
+2023-07-13 23:16:57:486 LL1 LogManager.java:25 look=[{3..7, 34}, {3..7, 34}]
+2023-07-13 23:16:57:486 LL1 LogManager.java:25 LL(1)? false
+2023-07-13 23:16:57:486 LL1 LogManager.java:25 
+DECISION 3 in rule functionDeclaration
+2023-07-13 23:16:57:486 LL1 LogManager.java:25 look=[{3..7, 34}, 9]
+2023-07-13 23:16:57:486 LL1 LogManager.java:25 LL(1)? true
+2023-07-13 23:16:57:487 LL1 LogManager.java:25 
+DECISION 4 in rule parameterList
+2023-07-13 23:16:57:487 LL1 LogManager.java:25 look=[10, 9]
+2023-07-13 23:16:57:487 LL1 LogManager.java:25 LL(1)? true
+2023-07-13 23:16:57:487 LL1 LogManager.java:25 
+DECISION 5 in rule compoundStatement
+2023-07-13 23:16:57:487 LL1 LogManager.java:25 look=[{2, 8, 11, 13, 15..16, 25..26, 30, 32..33}, 12]
+2023-07-13 23:16:57:487 LL1 LogManager.java:25 LL(1)? true
+2023-07-13 23:16:57:487 LL1 LogManager.java:25 
+DECISION 6 in rule statement
+2023-07-13 23:16:57:487 LL1 LogManager.java:25 look=[11, {2, 8, 25..26, 30, 32..33}, 13, 15, 16]
+2023-07-13 23:16:57:487 LL1 LogManager.java:25 LL(1)? true
+2023-07-13 23:16:57:487 LL1 LogManager.java:25 
+DECISION 7 in rule expressionStatement
+2023-07-13 23:16:57:487 LL1 LogManager.java:25 look=[{8, 25..26, 30, 32..33}, 2]
+2023-07-13 23:16:57:487 LL1 LogManager.java:25 LL(1)? true
+2023-07-13 23:16:57:487 LL1 LogManager.java:25 
+DECISION 8 in rule selectionStatement
+2023-07-13 23:16:57:488 LL1 LogManager.java:25 look=[14, {2, 8, 11..16, 25..26, 30, 32..33}]
+2023-07-13 23:16:57:488 LL1 LogManager.java:25 LL(1)? false
+2023-07-13 23:16:57:488 LL1 LogManager.java:25 
+DECISION 9 in rule jumpStatement
+2023-07-13 23:16:57:488 LL1 LogManager.java:25 look=[{8, 25..26, 30, 32..33}, 2]
+2023-07-13 23:16:57:488 LL1 LogManager.java:25 LL(1)? true
+2023-07-13 23:16:57:488 LL1 LogManager.java:25 
+DECISION 10 in rule assignmentExpression
+2023-07-13 23:16:57:488 LL1 LogManager.java:25 look=[31, {2, 9..10}]
+2023-07-13 23:16:57:488 LL1 LogManager.java:25 LL(1)? true
+2023-07-13 23:16:57:488 LL1 LogManager.java:25 
+DECISION 11 in rule logicalOrExpression
+2023-07-13 23:16:57:488 LL1 LogManager.java:25 look=[17, {2, 9..10, 31}]
+2023-07-13 23:16:57:488 LL1 LogManager.java:25 LL(1)? true
+2023-07-13 23:16:57:488 LL1 LogManager.java:25 
+DECISION 12 in rule logicalAndExpression
+2023-07-13 23:16:57:488 LL1 LogManager.java:25 look=[18, {2, 9..10, 17, 31}]
+2023-07-13 23:16:57:488 LL1 LogManager.java:25 LL(1)? true
+2023-07-13 23:16:57:489 LL1 LogManager.java:25 
+DECISION 13 in rule equalityExpression
+2023-07-13 23:16:57:489 LL1 LogManager.java:25 look=[{19..20}, {2, 9..10, 17..18, 31}]
+2023-07-13 23:16:57:489 LL1 LogManager.java:25 LL(1)? true
+2023-07-13 23:16:57:489 LL1 LogManager.java:25 
+DECISION 14 in rule relationalExpression
+2023-07-13 23:16:57:489 LL1 LogManager.java:25 look=[{21..24}, {2, 9..10, 17..20, 31}]
+2023-07-13 23:16:57:489 LL1 LogManager.java:25 LL(1)? true
+2023-07-13 23:16:57:489 LL1 LogManager.java:25 
+DECISION 15 in rule additiveExpression
+2023-07-13 23:16:57:489 LL1 LogManager.java:25 look=[{25..26}, {2, 9..10, 17..24, 31}]
+2023-07-13 23:16:57:489 LL1 LogManager.java:25 LL(1)? true
+2023-07-13 23:16:57:489 LL1 LogManager.java:25 
+DECISION 16 in rule multiplicativeExpression
+2023-07-13 23:16:57:489 LL1 LogManager.java:25 look=[{27..29}, {2, 9..10, 17..26, 31}]
+2023-07-13 23:16:57:489 LL1 LogManager.java:25 LL(1)? true
+2023-07-13 23:16:57:490 LL1 LogManager.java:25 
+DECISION 17 in rule unaryExpression
+2023-07-13 23:16:57:490 LL1 LogManager.java:25 look=[{25..26, 30}, {8, 32..33}]
+2023-07-13 23:16:57:490 LL1 LogManager.java:25 LL(1)? true
+2023-07-13 23:16:57:490 LL1 LogManager.java:25 
+DECISION 18 in rule primaryExpression
+2023-07-13 23:16:57:490 LL1 LogManager.java:25 look=[32, 33, 8, 32]
+2023-07-13 23:16:57:490 LL1 LogManager.java:25 LL(1)? false
+2023-07-13 23:16:57:490 LL1 LogManager.java:25 
+DECISION 19 in rule functionCall
+2023-07-13 23:16:57:492 LL1 LogManager.java:25 look=[{8, 25..26, 30, 32..33}, 9]
+2023-07-13 23:16:57:492 LL1 LogManager.java:25 LL(1)? true
+2023-07-13 23:16:57:492 LL1 LogManager.java:25 
+DECISION 20 in rule argumentList
+2023-07-13 23:16:57:492 LL1 LogManager.java:25 look=[10, 9]
+2023-07-13 23:16:57:492 LL1 LogManager.java:25 LL(1)? true
